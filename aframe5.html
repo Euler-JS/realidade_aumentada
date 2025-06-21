@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
+
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
+
+<body style="margin: 0px; overflow: hidden;">
+
+  <a-scene
+    vr-mode-ui="enabled: false;"
+    renderer="logarithmicDepthBuffer: true;"
+    embedded
+    arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+    log="Hello, Scene!"
+  >
+
+    <a-marker type="pattern" url="pattern-E.patt">
+      <a-image
+        src="../assets/imgs/samuele-errico-piccarini-MyjVReZ5GLQ-unsplash.jpg"
+        width="5"
+        height="5"
+        position="0 0.5 0"
+      ></a-image>
+    </a-marker>
+
+    <a-marker type="pattern" url="markerq.patt">
+      <a-box
+        width="1"
+        height="1"
+        depth="1"
+        position="0 0.5 0"
+        material="color: red;"
+        cursor="raycaster"
+        event="click: showAlert;"
+      ></a-box>
+
+      <a-entity id="alert" visible="false">
+        <a-animation attribute="scale"
+                     begin="showAlert"
+                     from="0.1 0.1 0.1"
+                     to="1 1 1"
+                     dur="500"></a-animation>
+        <a-plane color="#222" width="5" height="3" position="0 2 -5"></a-plane>
+        <a-text value="Olá, seja bem-vindo!"
+                align="center"
+                position="0 2.5 -5"
+                color="white"
+                wrap-count="30"></a-text>
+      </a-entity>
+    </a-marker>
+
+    <a-entity camera cursor></a-entity>
+
+    <script>
+        AFRAME.registerComponent('showAlert', {
+          init: function () {
+            alert("Olá, seja bem-vindo!");
+          }
+        });
+      </script>
+
+</body>
+
+</html>

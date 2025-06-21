@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<!-- A-Frame itself -->
+<script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+
+<!-- Pure three.js code that the A-Frame components use for location-based AR -->
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
+
+<!-- AR.js A-Frame components -->
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
+
+<body style="margin: 0px; overflow: hidden;">
+
+  <a-scene
+    vr-mode-ui="enabled: false;"
+    renderer="logarithmicDepthBuffer: true;"
+    embedded
+    arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+  >
+    <a-marker type="pattern" url="pattern-E.patt">
+      <a-image
+        src="../assets/imgs/samuele-errico-piccarini-MyjVReZ5GLQ-unsplash.jpg"
+        width="5"
+        height="5"
+        position="0 0.5 0"
+      ></a-image>
+
+      <!-- Texto de Boas-vindas -->
+      <!-- <a-text
+        value="Seja bem-vindo à Euler AR!"
+        color="white"
+        align="center"
+        position="0 0.2 0"
+        scale="2 2 2"
+      ></a-text> -->
+    </a-marker>
+
+    <a-marker type="pattern" url="pp.patt">
+        <a-box
+        id="clickableBox"
+        width="1"
+        height="1"
+        depth="1"
+        position="0 1.5 -1"
+        material="color: red;"
+        click-listener
+        cursor="raycaster" event="click: handleClick"
+      ></a-box>
+      </a-marker>
+
+    
+    <a-entity camera></a-entity>
+  </a-scene>
+  <!-- <script>
+    AFRAME.registerComponent('click-listener', {
+      init: function () {
+        var el = this.el;
+        el.addEventListener('click', function () {
+          console.log('Cliquei no cubo!');
+        });
+      }
+    });
+  </script>
+
+  <script>
+    function handleClick() {
+      console.log("Clicou no cubo!");
+    }
+  </script>
+
+  <script>
+    var clickableBox = document.getElementById('clickableBox');
+
+    clickableBox.addEventListener('click', function () {
+      alert("Olá, seja bem-vindo!");
+    });
+  </script> -->
+</body>
+
+</html>
